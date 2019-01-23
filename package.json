@@ -1,0 +1,33 @@
+{
+    "name": "tsurgeon-script",
+    "displayName": "Tsurgeon Scripts",
+    "description": "Language Support for Tsurgeon Scripts",
+    "publisher": "aslemen",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "tsurgeon",
+            "aliases": ["Tsurgeon", "tsurgeon"],
+            "extensions": [".tsurgeon",".tsgn"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "tsurgeon",
+            "scopeName": "source.tsurgeon",
+            "path": "./syntaxes/tsurgeon.tmLanguage.json"
+        }]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aslemen/vscode-tsurgeon"
+    },
+    "bugs": {
+        "url": "https://github.com/aslemen/vscode-tsurgeon/issues"
+    }
+}

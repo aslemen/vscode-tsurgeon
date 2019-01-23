@@ -1,0 +1,79 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Tsurgeon",
+	"patterns": [
+		{
+			"include": "#escape"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#commands"
+		},
+		{
+			"include": "#regexpMatch"
+		},
+		{
+			"include": "#regexpMatch_MatchName"
+		}
+	],
+	"repository": {
+		"comments":{
+			"patterns":[
+				{
+					"match": "%.*$",
+					"name": "comment.line.percentage"
+				}
+			]
+		},
+		"escape": {
+			"patterns": [
+				{
+					"match": "\\\\.",
+					"name": "constant.character.escape"
+				}
+			]
+		},
+		"regexpGrep":{
+			"patterns": [
+				{
+					"match": "(/[^/\\s]*/)([^/\\s]*/)",
+					"captures": {
+						"1": {"name": "string.regexp"},
+						"2": {"name": "string"}
+					}
+				}
+			]
+		},
+		"regexpMatch": {
+			"patterns":[
+				{
+					"match": "/[^/\\s]*/",
+					"name":"string.regexp"
+				}
+			]
+		},
+		"regexpMatch_MatchName": {
+			"patterns":[
+				{
+					"match": "(`#')(\\d+)(\\\\%)([^\\s=`#\\)]+)",
+					"name": "support.property-value",
+					"captures": {
+						"1": {"name": "keyword.operator"},
+						"2": {"name": "constant.numeric"},
+						"3": {"name": "keyword.operator"},
+						"4": {"name": "entity.name.tag"}
+					}
+				}
+			]
+		},
+		"commands": {
+			"patterns": [{
+				"name": "keyword.control.tsurgeon",
+				"match": "^\\s*(delete|prune|excise|relabel|insert|move|replace|createSubtree|adjoin|adjoinH|adjoinF|coindex)\\b"
+			}]
+		}
+	},
+	"scopeName": "source.tsurgeon"
+}
